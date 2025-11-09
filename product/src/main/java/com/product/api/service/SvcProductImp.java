@@ -74,6 +74,29 @@ public class SvcProductImp implements SvcProduct{
 	}
 
 	@Override
+	public ResponseEntity<DtoProductOut> getProductByGtin(String gtin) {
+		try {
+			DtoProductOut product = repo.getProductByGtin(gtin);
+			if(product == null )
+				throw new ApiException(HttpStatus.NOT_FOUND, "El gtin del producto no existe o está inactivo");
+
+			List<ProductImage> imageList = repoProductImage.findByProduct_id(product.getProduct_id());
+			List<Map<String, String>> imageMapList = imageList.stream().map(img -> {
+				Map<String, String> imageMap = new HashMap<>();
+				imageMap.put("image", img.getImage());
+				return imageMap;
+			}).collect(Collectors.toList());
+
+			product.setImages(imageMapList);
+
+			return new ResponseEntity<>(product, HttpStatus.OK); 
+
+		}catch (DataAccessException e) {
+			throw new DBAccessException(e);
+		}
+	}
+
+	@Override
 	public ResponseEntity<ApiResponse> createProduct(DtoProductIn in) { 
 		try {
 			Product product = mapper.fromDto(in); 
