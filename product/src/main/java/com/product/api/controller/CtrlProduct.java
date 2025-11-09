@@ -46,12 +46,6 @@ public class CtrlProduct {
 		return svc.getProduct(id);
 	}
 
-	@GetMapping("/gtin/{gtin}")
-	@Operation(summary = "Consultar producto por GTIN", description = "Consulta un producto por su código GTIN")
-	public ResponseEntity<DtoProductOut> getProductByGtin(@PathVariable String gtin) {
-		return svc.getProductByGtin(gtin);
-	}
-
 	@PostMapping
 	@Operation(summary = "Registrar productos", description = "Registra un nuevo producto")
 	public ResponseEntity<ApiResponse> createProduct(@Valid @RequestBody DtoProductIn in) {

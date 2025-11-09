@@ -44,9 +44,9 @@ public class OpenApiConfig {
         // Construye el objeto OpenAPI
         return new OpenAPI()
             .info(new Info()
-                .title("DWB - API Product")
+                .title("DWB - API Customer")
                 .version("0.0.1")
-                .description("API para la gestión de productos para la tienda en línea FCiencias Store."))
+                .description("API para la gestión clientes para la tienda en línea FCiencias Store."))
             
             // --- Añade los componentes de seguridad al OpenAPI ---
             .addSecurityItem(securityRequirement) // Añade el requisito de seguridad globalmente
