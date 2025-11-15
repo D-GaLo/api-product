@@ -31,7 +31,7 @@ public class SecurityConfig {
 				.requestMatchers(HttpMethod.PATCH, "/category/{id}/**").hasAuthority("ADMIN")
 				.requestMatchers(HttpMethod.GET, "/product/**").hasAnyAuthority("ADMIN", "CUSTOMER")
 				.requestMatchers(HttpMethod.POST, "/product").hasAuthority("ADMIN")
-				.requestMatchers(HttpMethod.PUT, "/product/{id}").hasAuthority("ADMIN")
+				.requestMatchers(HttpMethod.PUT, "/product/{id}").hasAnyAuthority("ADMIN", "CUSTOMER")
 				.requestMatchers(HttpMethod.PATCH, "/product/{id}/**").hasAuthority("ADMIN")
 				.requestMatchers(HttpMethod.GET, "/product/{id}/image").hasAnyAuthority("ADMIN", "CUSTOMER")
 				.requestMatchers(HttpMethod.POST, "/product/{id}/image").hasAnyAuthority("ADMIN", "CUSTOMER")
