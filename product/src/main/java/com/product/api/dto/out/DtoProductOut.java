@@ -29,6 +29,8 @@ public class DtoProductOut {
 	private Integer status;
 	
 	private String category;
+
+	private Integer category_id;
 	
 	@Transient
 	private List<Map<String, String>> images;
@@ -103,5 +105,13 @@ public class DtoProductOut {
 
 	public void setImages(List<Map<String, String>> images) {
 		this.images = images;
+	}
+
+	public Integer getCategory_id() {
+		return category_id;
+	}
+
+	public void setCategory_id(Integer category_id) {
+		this.category_id = category_id;
 	}
 }
